@@ -1,10 +1,10 @@
-# API Documentation
+# Documentación de la API
 
 ## **Autenticación**
 ---
 
 ### **Iniciar sesión**
-- **POST** `/v1/auth/login`
+- **POST** `/v1/auth/iniciarSesion`
   - **Cuerpo**:
     ```json
     {
@@ -13,13 +13,8 @@
     }
     ```
 
----
-
-## **Estudiantes**
----
-
-### **Registrar Estudiante**
-- **POST** `/v1/auth/register`
+### **Registrar Usuario**
+- **POST** `/v1/auth/registrar`
   - **Cuerpo**:
     ```json
     {
@@ -28,26 +23,31 @@
       "correo": "email@example.com",
       "contraseña": "Contraseña123!",
       "telefono": "12345678",
-      "rol": "ROL_ESTUDIANTE"
+      "rol": "ROL_ESTUDIANTE" // o "ROL_PROFESOR"
     }
     ```
 
+---
+
+## **Estudiantes**
+---
+
 ### **Obtener Estudiante por ID**
-- **GET** `/v1/student/findStudent/:uid`
+- **GET** `/v1/estudiante/buscarEstudiante/:uid`
   - **Parámetros**:
     - `uid` (string): ID del estudiante
 
 ### **Obtener Todos los Estudiantes**
-- **GET** `/v1/student/`
+- **GET** `/v1/estudiante/`
   - **Parámetros**: Ninguno
 
 ### **Eliminar Estudiante**
-- **DELETE** `/v1/student/deleteStudent/:uid`
+- **DELETE** `/v1/estudiante/eliminarEstudiante/:uid`
   - **Parámetros**:
     - `uid` (string): ID del estudiante
 
 ### **Actualizar Contraseña**
-- **PATCH** `/v1/student/updatePassword/:uid`
+- **PATCH** `/v1/estudiante/actualizarContraseña/:uid`
   - **Parámetros**:
     - `uid` (string): ID del estudiante
   - **Cuerpo**:
@@ -58,7 +58,7 @@
     ```
 
 ### **Actualizar Estudiante**
-- **PUT** `/v1/student/updateStudent/:uid`
+- **PUT** `/v1/estudiante/actualizarEstudiante/:uid`
   - **Parámetros**:
     - `uid` (string): ID del estudiante
   - **Cuerpo**:
@@ -72,7 +72,7 @@
     ```
 
 ### **Asignar Clase al Estudiante**
-- **POST** `/v1/student/assignClass/:uid`
+- **POST** `/v1/estudiante/asignarClase/:uid`
   - **Parámetros**:
     - `uid` (string): ID del estudiante
   - **Cuerpo**:
@@ -83,7 +83,7 @@
     ```
 
 ### **Obtener Clases Asignadas**
-- **GET** `/v1/student/assignedClasses/:uid`
+- **GET** `/v1/estudiante/clasesAsignadas/:uid`
   - **Parámetros**:
     - `uid` (string): ID del estudiante
 
@@ -92,36 +92,22 @@
 ## **Profesores**
 ---
 
-### **Registrar Profesor**
-- **POST** `/v1/auth/register`
-  - **Cuerpo**:
-    ```json
-    {
-      "nombre": "Nombre del profesor",
-      "apellido": "Apellido del profesor",
-      "correo": "email@example.com",
-      "contraseña": "Contraseña123!",
-      "asignatura": "Asignatura",
-      "rol": "ROL_PROFESOR"
-    }
-    ```
-
 ### **Obtener Profesor por ID**
-- **GET** `/v1/teacher/findTeacher/:uid`
+- **GET** `/v1/profesor/buscarProfesor/:uid`
   - **Parámetros**:
     - `uid` (string): ID del profesor
 
 ### **Obtener Todos los Profesores**
-- **GET** `/v1/teacher/`
+- **GET** `/v1/profesor/`
   - **Parámetros**: Ninguno
 
 ### **Eliminar Profesor**
-- **DELETE** `/v1/teacher/deleteTeacher/:uid`
+- **DELETE** `/v1/profesor/eliminarProfesor/:uid`
   - **Parámetros**:
     - `uid` (string): ID del profesor
 
 ### **Actualizar Contraseña**
-- **PATCH** `/v1/teacher/updatePassword/:uid`
+- **PATCH** `/v1/profesor/actualizarContraseña/:uid`
   - **Parámetros**:
     - `uid` (string): ID del profesor
   - **Cuerpo**:
@@ -132,7 +118,7 @@
     ```
 
 ### **Actualizar Profesor**
-- **PUT** `/v1/teacher/updateTeacher/:uid`
+- **PUT** `/v1/profesor/actualizarProfesor/:uid`
   - **Parámetros**:
     - `uid` (string): ID del profesor
   - **Cuerpo**:
@@ -146,7 +132,7 @@
     ```
 
 ### **Asignar Clase al Profesor**
-- **POST** `/v1/teacher/assignClass/:uid`
+- **POST** `/v1/profesor/asignarClase/:uid`
   - **Parámetros**:
     - `uid` (string): ID del profesor
   - **Cuerpo**:
@@ -157,7 +143,7 @@
     ```
 
 ### **Obtener Clases Asignadas**
-- **GET** `/v1/teacher/assignedClasses/:uid`
+- **GET** `/v1/profesor/clasesAsignadas/:uid`
   - **Parámetros**:
     - `uid` (string): ID del profesor
 
@@ -167,7 +153,7 @@
 ---
 
 ### **Crear Clase**
-- **POST** `/v1/class/createClass`
+- **POST** `/v1/clase/crearClase`
   - **Cuerpo**:
     ```json
     {
@@ -178,21 +164,21 @@
     ```
 
 ### **Obtener Clase por ID**
-- **GET** `/v1/class/findClass/:classId`
+- **GET** `/v1/clase/buscarClase/:classId`
   - **Parámetros**:
     - `classId` (string): ID de la clase
 
 ### **Obtener Todas las Clases**
-- **GET** `/v1/class/`
+- **GET** `/v1/clase/`
   - **Parámetros**: Ninguno
 
 ### **Eliminar Clase**
-- **DELETE** `/v1/class/deleteClass/:classId`
+- **DELETE** `/v1/clase/eliminarClase/:classId`
   - **Parámetros**:
     - `classId` (string): ID de la clase
 
 ### **Actualizar Clase**
-- **PATCH** `/v1/class/updateClass/:classId`
+- **PATCH** `/v1/clase/actualizarClase/:classId`
   - **Parámetros**:
     - `classId` (string): ID de la clase
   - **Cuerpo**:
@@ -205,11 +191,6 @@
     ```
 
 ### **Obtener Estudiantes Asignados**
-- **GET** `/v1/class/assignedStudents/:classId`
+- **GET** `/v1/clase/estudiantesAsignados/:classId`
   - **Parámetros**:
     - `classId` (string): ID de la clase
-
-Obtener Estudiantes Asignados
-GET /v1/class/assignedStudents/:classId
-Parámetros:
-classId (string): ID de la clase
